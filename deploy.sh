@@ -19,8 +19,8 @@ echo "Generating release..."
 mix release
 
 echo "Stopping old copy of app, if any..."
-_build/prod/rel/task1/bin/task1 stop || true
+_build/dev/rel/task1/bin/task1 stop || true
 
 echo "Starting app..."
 
-_build/prod/rel/task1/bin/task1 start
+_build/dev/rel/task1/bin/task1 start
