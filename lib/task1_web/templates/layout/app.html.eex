@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Task1 · Phoenix Framework</title>
+    <title>Task1 - A Simple Task Manager</title>
     <link rel="stylesheet" href="<%= Routes.static_url(@conn, "/css/app.css") %>"/>
   </head>
   <body>
@@ -12,12 +12,19 @@
       <section class="container">
         <nav role="navigation">
           <ul>
-            <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
+            <%= if is_nil(@current_user) do %>
+            <li><%= link :Login, to: Routes.page_path(@conn, :index) %></li>
+            <li><%= link :Register, to: Routes.user_path(@conn, :register) %></li>
+
+            <%= else %>
+            <li><%= @current_user.email %></li>
+            <li><%= link :Logout, to: Routes.page_path(@conn, :logout) %></li>
+            <li><%= link :MyTasks, to: Routes.task_path(@conn, :index_for_user) %></li>
+            <li><%= link :Home, to: Routes.task_path(@conn, :index) %></li>
+            <%= end %>
           </ul>
         </nav>
-        <a href="http://phoenixframework.org/" class="phx-logo">
-          <img src="<%= Routes.static_url(@conn, "/images/phoenix.png") %>" alt="Phoenix Framework Logo"/>
-        </a>
+        Task Manager
       </section>
     </header>
     <main role="main" class="container">

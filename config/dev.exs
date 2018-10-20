@@ -61,8 +61,8 @@ config :phoenix, :plug_init_mode, :runtime
 
 # Configure your database
 config :task1, Task1.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "task",
+  password: "ohl7Ughei4ie",
   database: "task1_dev",
   hostname: "localhost",
   pool_size: 10

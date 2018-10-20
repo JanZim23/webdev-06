@@ -1,0 +1,14 @@
+<h1>Register New User</h1>
+<%= form_for @changeset, Routes.user_path(@conn, :create),[class: "form-inline"], fn f -> %>
+<div>
+    <%= label f, :email %>
+    <%= text_input f, :email %>
+    <%= error_tag f, :email %>
+
+    <%= label f, :username %>
+    <%= text_input f, :username %>
+    <%= error_tag f, :username %>
+
+</div>
+  <%= submit "Submit", class: "btn btn-primary" %>
+ <% end %>

@@ -7,6 +7,7 @@ defmodule Task1Web.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug Task1Web.Plugs.FetchLogin
   end
 
   pipeline :api do
@@ -17,6 +18,12 @@ defmodule Task1Web.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    resources "/user", UserController
+    resources "/task", TaskController
+    get "/mytasks", TaskController, :index_for_user
+    post "/login", PageController, :login
+    get "/logout", PageController, :logout
+    get "/register", UserController, :register
   end
 
   # Other scopes may use custom stacks.
